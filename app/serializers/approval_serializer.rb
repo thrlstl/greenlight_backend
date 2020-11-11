@@ -4,5 +4,6 @@ class ApprovalSerializer < ActiveModel::Serializer
             :approval
 
   has_one :user
+  has_one :photo
   
 end
