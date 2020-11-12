@@ -5,6 +5,11 @@ class UsersController < ApplicationController
         render json: users, include: '*.*'
     end
 
+    def show
+        user = User.find(params[:id])
+        render json: user, include: '*.*'
+    end
+
     def create
         if User.find_by(username: params[:username])
         render json: {error: 'Username already exists'}

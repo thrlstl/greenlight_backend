@@ -9,7 +9,7 @@ class User < ApplicationRecord
     def collections
         created_collections = self.created_collections.map{|collection| CollectionSerializer.new(collection)}
         collabs = self.collabs.map{|collection| CollectionSerializer.new(collection)}
-        (created_collections + collabs).uniq
+        collections = (created_collections + collabs).uniq
     end
     
 end
