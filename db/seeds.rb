@@ -9,13 +9,23 @@
 require 'faker'
 require 'bcrypt'
 
+ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+
 Collaboration.destroy_all
 Approval.destroy_all
 Photo.destroy_all
 Collection.destroy_all
 User.destroy_all
 
-10.times do User.create(
+User.create(
+    first_name: 'Matthew',
+    last_name: 'Steele',
+    email: 'matthewsteeleonline@gmail.com',
+    username: 'therealsteele',
+    password: 'password'
+)
+
+6.times do User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -24,43 +34,142 @@ User.destroy_all
 )
 end
 
-10.times do Collection.create(
+20.times do Collection.create(
     user_id: User.all.sample.id,
     name: Faker::Hipster.word,
     location: Faker::Address.city
 )
 end
 
-20.times do Collaboration.create(
+30.times do Collaboration.create(
     user_id: User.all.sample.id,
     collection_id: Collection.all.sample.id
 )
 end
 
-100.times do Photo.create(
+15.times do Photo.create(
     collection_id: Collection.all.sample.id,
     caption: Faker::Quote.singular_siegler
 ).photo.attach(
-  io: File.open('db/PlaceholderImage.png'),
+  io: File.open('db/migrate/images/flowers-324175_1920.jpg'),
   filename: 'PlaceholderImage.png',
   content_type: 'application/png'
   )
 end
 
-200.times do Approval.create(
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/fog-1535201_1920.jpg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/mountain-landscape-2031539_1920.jpg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/the-road-815297_1920.jpg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/yellowstone-national-park-1581879_1920.jpg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/candid-1.jpeg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/candid-3.jpeg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/candid-4.jpeg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/candid-5.jpeg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/candid-6.jpeg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/candid-7.jpeg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+15.times do Photo.create(
+    collection_id: Collection.all.sample.id,
+    caption: Faker::Quote.singular_siegler
+).photo.attach(
+  io: File.open('db/migrate/images/candid-8.jpeg'),
+  filename: 'PlaceholderImage.png',
+  content_type: 'application/png'
+  )
+end
+
+500.times do Approval.create(
     approval: Faker::Boolean.boolean,
     photo_id: Photo.all.sample.id,
     user_id: User.all.sample.id
 )
 end
-
-# User.create(
-#     username: 'Matthew',
-#     password: 'password'
-# )
-
-# 11.times do Note.create(
-#     title: Faker::Book.title,
-#     content: Faker::Quote.matz,
-#     user_id: User.all.sample.id
-# )   
