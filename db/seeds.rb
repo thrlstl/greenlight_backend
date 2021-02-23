@@ -18,10 +18,10 @@ Collection.destroy_all
 User.destroy_all
 
 User.create(
-    first_name: 'Matthew',
-    last_name: 'Steele',
-    email: 'matthewsteeleonline@gmail.com',
-    username: 'therealsteele',
+    first_name: 'Test',
+    last_name: 'User',
+    email: 'testuser@gmail.com',
+    username: 'username',
     password: 'password'
 )
 
