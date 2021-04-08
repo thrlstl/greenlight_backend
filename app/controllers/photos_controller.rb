@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
 
     def index
         photos = Photos.all 
-        render json: photos
+        render json: photos, include: '*.*'
     end
 
     def create

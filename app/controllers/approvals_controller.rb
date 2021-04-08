@@ -5,6 +5,11 @@ class ApprovalsController < ApplicationController
         render json: approvals
     end
 
+    def show
+        approval = Approval.find(params[:id])
+        render json: approval
+    end
+
     # def destroy
     #     note_to_delete = Note.find(params[:id])
     #     note_to_delete.destroy

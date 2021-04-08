@@ -3,7 +3,9 @@ class PhotoSerializer < ActiveModel::Serializer
   attributes :id,
             :photo,
             :caption,
-            :approvals
+            :approvals,
+            :approvalsCount,
+            :disapprovalsCount
 
   has_one :collection
   has_many :approvals
